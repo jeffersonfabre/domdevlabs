@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DomDevLabs — Portfólio de Jefferson Fabre</title>
+<meta name="description" content="Portfólio da DomDevLabs: automação, extensões Chrome, dashboards de dados e apps web por Jefferson Fabre.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   DomDevLabs — Portfólio  ·  v1.0.0
+   Para trocar a imagem de um projeto: preencha o campo
+   "imagem" no array PROJETOS (ex.: "img/ata-full.png").
+   Vazio = mostra a prévia ilustrada automática.
+   ========================================================= */
+:root{
+  --bg:#0a0f1c; --bg2:#0f172a; --card:#121b2f; --card2:#17233c;
+  --line:rgba(148,163,184,.14); --txt:#e6ebf5; --mut:#94a3b8;
+  --orange:#ff7a1a; --orange2:#ffb066; --blue:#2f7cf6; --blue2:#7fb2ff;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:Sora,Inter,sans-serif;line-height:1.15;letter-spacing:-.02em}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+
+/* fundo */
+.bg-grid{position:fixed;inset:0;z-index:-2;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%);opacity:.5}
+.glow{position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.35;pointer-events:none}
+.glow.a{width:520px;height:520px;background:var(--orange);top:-220px;right:-120px}
+.glow.b{width:600px;height:600px;background:var(--blue);top:180px;left:-300px;opacity:.22}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,15,28,.72);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-family:Sora;font-weight:800;font-size:19px}
+.brand b{color:var(--orange)}
+.brand small{color:var(--blue2);font-weight:600}
+.nav-links{display:flex;gap:28px;font-size:14px;color:var(--mut)}
+.nav-links a:hover{color:var(--txt)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:14px;border:1px solid var(--line);transition:.2s;cursor:pointer;background:none;color:var(--txt);font-family:inherit}
+.btn.pri{background:linear-gradient(135deg,var(--orange),#ff5a1a);border:0;color:#fff;box-shadow:0 8px 30px -8px rgba(255,122,26,.6)}
+.btn.pri:hover{transform:translateY(-2px);box-shadow:0 12px 34px -8px rgba(255,122,26,.75)}
+.btn:not(.pri):hover{border-color:var(--blue2);background:rgba(47,124,246,.08)}
+.menu-btn{display:none}
+
+/* hero */
+.hero{padding:96px 0 72px;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--orange2);background:rgba(255,122,26,.1);border:1px solid rgba(255,122,26,.3);padding:6px 14px;border-radius:99px;margin-bottom:22px}
+.pill i{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e}
+.hero h1{font-size:clamp(38px,5.4vw,62px);font-weight:800;margin-bottom:22px}
+.hero h1 .grad{background:linear-gradient(90deg,var(--orange),var(--orange2) 40%,var(--blue2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:18px;color:var(--mut);max-width:560px;margin-bottom:32px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px;max-width:520px}
+.stat{border-left:2px solid var(--orange);padding-left:14px}
+.stat b{font-family:Sora;font-size:28px;display:block}
+.stat span{font-size:13px;color:var(--mut)}
+
+/* cartão de código do hero */
+.code-card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);box-shadow:0 30px 80px -30px rgba(0,0,0,.8);overflow:hidden;transform:rotate(1.2deg)}
+.code-top{display:flex;gap:7px;padding:14px 16px;border-bottom:1px solid var(--line);align-items:center}
+.code-top i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.code-top i:nth-child(2){background:#febc2e}.code-top i:nth-child(3){background:#28c840}
+.code-top span{margin-left:10px;font-size:12px;color:var(--mut)}
+.code-body{padding:22px;font-size:13.5px;line-height:1.85}
+.k{color:#c792ea}.s{color:#c3e88d}.f{color:var(--blue2)}.c{color:#5c6b85}.o{color:var(--orange2)}
+
+/* seções */
+section{padding:88px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+.eyebrow{font-size:13px;color:var(--orange);font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.sec-head h2{font-size:clamp(28px,3.4vw,40px)}
+.sec-head p{color:var(--mut);max-width:520px}
+
+/* filtros */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.chip{padding:9px 16px;border-radius:99px;border:1px solid var(--line);font-size:13.5px;color:var(--mut);cursor:pointer;background:rgba(255,255,255,.02);font-family:inherit;transition:.2s}
+.chip:hover{color:var(--txt)}
+.chip.on{background:var(--txt);color:var(--bg);border-color:var(--txt);font-weight:600}
+.chip em{font-style:normal;opacity:.6;margin-left:4px}
+
+/* grade de projetos */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s;display:flex;flex-direction:column;animation:up .45s both}
+.card:hover{transform:translateY(-6px);border-color:rgba(255,122,26,.45);box-shadow:0 24px 50px -24px rgba(255,122,26,.35)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.thumb{aspect-ratio:16/10;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.status{position:absolute;bottom:10px;right:10px;font-size:11px;font-weight:600;padding:4px 10px;border-radius:99px;backdrop-filter:blur(6px);z-index:3}
+.status.ok{background:rgba(34,197,94,.18);color:#86efac;border:1px solid rgba(34,197,94,.35)}
+.status.dev{background:rgba(255,176,102,.16);color:var(--orange2);border:1px solid rgba(255,176,102,.35)}
+.card-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.cat{font-size:12px;color:var(--blue2);font-weight:600;margin-bottom:6px}
+.card h3{font-size:19px;margin-bottom:8px}
+.card p{font-size:14px;color:var(--mut);flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.tag{font-size:11.5px;padding:3px 9px;border-radius:6px;background:rgba(127,178,255,.08);color:#b9cdf0;border:1px solid rgba(127,178,255,.15);font-family:"JetBrains Mono",monospace}
+
+/* ====== prévias ilustradas (mockups) ====== */
+.mk{position:absolute;inset:0;padding:18px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 80% 10%,color-mix(in srgb,var(--c) 40%,transparent),transparent 55%),linear-gradient(135deg,#0d1526,#121e36)}
+.mk .win{width:100%;height:100%;background:#0b1220;border-radius:10px;border:1px solid rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 14px 34px -12px rgba(0,0,0,.7)}
+.mk .bar{height:22px;display:flex;align-items:center;gap:5px;padding:0 9px;background:#141d30;flex-shrink:0}
+.mk .bar i{width:7px;height:7px;border-radius:50%;background:#3a4560}
+.mk .bar .url{margin-left:8px;flex:1;height:11px;border-radius:5px;background:#0b1220;font-size:7.5px;color:#64748b;padding-left:6px;line-height:11px;font-family:"JetBrains Mono"}
+.mk .in{flex:1;display:flex;gap:8px;padding:10px;min-height:0}
+.ln{height:6px;border-radius:3px;background:rgba(148,163,184,.18);margin-bottom:6px}
+.ln.c{background:var(--c);opacity:.85}
+.blk{border-radius:6px;background:rgba(148,163,184,.08);border:1px solid rgba(148,163,184,.08)}
+/* extensão */
+.mk-ext .page{flex:1;padding:4px}
+.mk-ext .pop{width:44%;background:#111a2c;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);border-radius:8px;padding:9px;box-shadow:0 10px 24px -8px color-mix(in srgb,var(--c) 50%,transparent);display:flex;flex-direction:column;gap:6px}
+.mk-ext .pop .hd{display:flex;align-items:center;gap:6px;font-size:9px;font-weight:700;color:#fff;font-family:Sora}
+.mk-ext .pop .hd i{width:14px;height:14px;border-radius:4px;background:var(--c)}
+.mk-ext .row{display:flex;align-items:center;gap:5px;font-size:7px;color:#94a3b8}
+.mk-ext .row b{width:8px;height:8px;border-radius:2px;background:var(--c);opacity:.7;flex-shrink:0}
+.mk-ext .go{margin-top:auto;height:16px;border-radius:5px;background:var(--c);font-size:7.5px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+/* dashboard */
+.mk-dash .side{width:18%;display:flex;flex-direction:column;gap:5px}
+.mk-dash .side .blk{height:9px}
+.mk-dash .main{flex:1;display:flex;flex-direction:column;gap:7px}
+.mk-dash .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.mk-dash .kpi{padding:6px;font-size:6.5px;color:#94a3b8}
+.mk-dash .kpi b{display:block;font-size:11px;color:#fff;font-family:Sora}
+.mk-dash .chart{flex:1;display:flex;align-items:flex-end;gap:5%;padding:8px 8px 6px}
+.mk-dash .chart span{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(180deg,var(--c),color-mix(in srgb,var(--c) 30%,transparent))}
+/* 3D */
+.mk-3d .in{align-items:center;justify-content:center;perspective:500px}
+.mk-3d .iso{display:flex;gap:9px;align-items:flex-end;transform:rotateX(55deg) rotateZ(-38deg);transform-style:preserve-3d}
+.mk-3d .iso span{width:20px;background:var(--c);border-radius:2px;box-shadow:6px 6px 0 color-mix(in srgb,var(--c) 45%,#000)}
+/* mobile */
+.mk-mob{gap:14px}
+.mk-mob .ph{height:100%;aspect-ratio:9/17;background:#0b1220;border:3px solid #26324b;border-radius:16px;padding:9px 7px;display:flex;flex-direction:column;gap:5px;box-shadow:0 14px 30px -10px rgba(0,0,0,.8)}
+.mk-mob .ph:nth-child(2){transform:translateY(10px) scale(.92);opacity:.9}
+.mk-mob .top{height:24px;border-radius:7px;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 40%,#0b1220));font-size:6.5px;color:#fff;padding:4px 6px;font-weight:700;font-family:Sora}
+.mk-mob .it{height:14px;border-radius:5px;background:rgba(148,163,184,.1);display:flex;align-items:center;gap:4px;padding:0 5px}
+.mk-mob .it i{width:6px;height:6px;border-radius:50%;border:1.5px solid var(--c)}
+.mk-mob .it i.d{background:var(--c)}
+.mk-mob .it u{flex:1;height:3px;background:rgba(148,163,184,.25);border-radius:2px;text-decoration:none}
+.mk-mob .fab{margin-top:auto;align-self:flex-end;width:18px;height:18px;border-radius:50%;background:var(--c)}
+/* site */
+.mk-web .in{flex-direction:column;gap:7px}
+.mk-web .hero2{flex:1.1;border-radius:7px;background:linear-gradient(120deg,color-mix(in srgb,var(--c) 55%,#0b1220),#0b1220);padding:10px;display:flex;flex-direction:column;justify-content:center}
+.mk-web .hero2 .t{font-family:Sora;font-size:12px;font-weight:800;color:#fff;margin-bottom:5px}
+.mk-web .hero2 .b{width:42px;height:11px;border-radius:4px;background:var(--c);margin-top:4px}
+.mk-web .prods{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.mk-web .prods div{border-radius:6px;background:rgba(148,163,184,.08);position:relative}
+.mk-web .prods div::after{content:"";position:absolute;left:20%;right:20%;top:18%;bottom:30%;border-radius:4px 4px 8px 8px;background:color-mix(in srgb,var(--c) 45%,transparent)}
+/* terminal */
+.mk-term .in{flex-direction:column;gap:3px;font-family:"JetBrains Mono";font-size:8px;color:#94a3b8;padding:12px}
+.mk-term .g{color:#4ade80}.mk-term .y{color:var(--c)}.mk-term .w{color:#e2e8f0}
+/* planilha */
+.mk-sheet .in{flex-direction:column;gap:0;padding:0}
+.mk-sheet table{border-collapse:collapse;width:100%;height:100%;font-size:7px;color:#94a3b8}
+.mk-sheet td{border:1px solid rgba(148,163,184,.12);padding:0 4px}
+.mk-sheet tr:first-child td{background:#141d30;color:#cbd5e1;font-weight:700}
+.mk-sheet td.p{background:#1e293b;color:#fff}.mk-sheet td.v{background:color-mix(in srgb,#ef4444 35%,transparent);color:#fff}.mk-sheet td.x{background:color-mix(in srgb,#a855f7 35%,transparent);color:#fff}
+/* leitor */
+.mk-read .in{padding:14px 18px;flex-direction:column;font-family:Georgia,serif;font-size:9px;color:#cbd5e1;line-height:1.7}
+.mk-read mark{background:color-mix(in srgb,var(--c) 70%,transparent);color:#111;padding:0 2px;border-radius:2px}
+.mk-read .tip{align-self:flex-start;margin-top:6px;background:#111a2c;border:1px solid var(--c);border-radius:6px;padding:5px 8px;font-family:Inter;font-size:7.5px}
+.mk-read .tip b{color:var(--c)}
+
+/* sobre */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.avatar{aspect-ratio:1;border-radius:28px;background:linear-gradient(145deg,var(--card2),var(--card));border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.avatar::before{content:"";position:absolute;width:70%;height:70%;border-radius:50%;background:radial-gradient(circle,rgba(255,122,26,.35),transparent 70%)}
+.avatar svg{width:56%;position:relative}
+.about h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:18px}
+.about p{color:var(--mut);margin-bottom:14px}
+.about p strong{color:var(--txt)}
+.diff{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.diff div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.diff h4{font-size:15px;margin-bottom:4px}
+.diff span{font-size:13px;color:var(--mut)}
+
+/* stack */
+.stack{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.st .ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:20px}
+.st h4{font-size:16px;margin-bottom:12px}
+.st ul{list-style:none;display:flex;flex-direction:column;gap:7px;font-size:14px;color:var(--mut)}
+.st li::before{content:"›";color:var(--orange);margin-right:8px;font-weight:700}
+
+/* contato */
+.contact{background:linear-gradient(135deg,rgba(255,122,26,.14),rgba(47,124,246,.12));border:1px solid var(--line);border-radius:28px;padding:56px;text-align:center;position:relative;overflow:hidden}
+.contact h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:14px}
+.contact p{color:var(--mut);max-width:560px;margin:0 auto 30px}
+.contact .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.contact .mail{margin-top:18px;font-size:14px;color:var(--mut)}
+.contact .mail b{color:var(--txt)}
+
+footer{padding:40px 0;border-top:1px solid var(--line);margin-top:88px;font-size:13px;color:var(--mut)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(3,6,14,.78);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex;animation:fade .2s}
+@keyframes fade{from{opacity:0}}
+.mbox{background:var(--bg2);border:1px solid var(--line);border-radius:24px;max-width:880px;width:100%;max-height:92vh;overflow:auto;position:relative}
+.mbox .thumb{aspect-ratio:16/8}
+.mbox .mk{padding:28px 60px}
+.mclose{position:absolute;top:14px;right:14px;z-index:5;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(10,15,28,.8);color:#fff;font-size:20px;cursor:pointer}
+.mcontent{padding:30px 36px 36px}
+.mcontent h3{font-size:28px;margin:4px 0 12px}
+.mcontent>p{color:var(--mut);font-size:16px}
+.mcols{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;margin-top:24px}
+.mcols h4{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.mcols ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14.5px}
+.mcols li{padding-left:22px;position:relative}
+.mcols li::before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;border-radius:3px;background:var(--orange);opacity:.85}
+.impact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;font-size:14px;color:var(--mut);margin-bottom:18px}
+.impact b{color:var(--txt);display:block;margin-bottom:4px;font-family:Sora}
+.mlinks{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:56px}
+  .code-card{transform:none}
+  .about{grid-template-columns:1fr}
+  .avatar{max-width:300px}
+  .stack{grid-template-columns:1fr 1fr}
+  .mcols{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .nav-links.show{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--bg2);padding:20px 24px;border-bottom:1px solid var(--line)}
+  .menu-btn{display:inline-flex}
+  .nav-cta{display:none}
+}
+@media (max-width:560px){
+  .stack,.diff{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .contact{padding:36px 22px}
+  .mcontent{padding:24px 22px 28px}
+  .mbox .mk{padding:18px}
+  .stats{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div><div class="glow a"></div><div class="glow b"></div>
+
+<!-- logo reutilizável -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="gO" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb066"/><stop offset="1" stop-color="#ff6a1a"/></linearGradient>
+    <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7fb2ff"/><stop offset="1" stop-color="#2f7cf6"/></linearGradient>
+    <symbol id="logo" viewBox="0 0 100 100">
+      <g fill="url(#gO)">
+        <path d="M50 8l6 0 2 10a33 33 0 0 1 9 4l9-6 8 8-6 9a33 33 0 0 1 4 9l10 2v12l-10 2a33 33 0 0 1-4 9l6 9-8 8-9-6a33 33 0 0 1-9 4l-2 10H44l-2-10a33 33 0 0 1-9-4l-9 6-8-8 6-9a33 33 0 0 1-4-9L8 56V44l10-2a33 33 0 0 1 4-9l-6-9 8-8 9 6a33 33 0 0 1 9-4l2-10z"/>
+      </g>
+      <circle cx="50" cy="50" r="25" fill="#0a0f1c"/>
+      <path d="M41 40l-10 10 10 10M59 40l10 10-10 10" stroke="url(#gB)" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M53 37l-6 26" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<nav>
+  <div class="wrap">
+    <a href="#topo" class="brand"><svg width="34" height="34"><use href="#logo"/></svg><span><b>Dom</b>Dev<small>Labs</small></span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#projetos">Projetos</a><a href="#sobre">Sobre</a><a href="#stack">Habilidades</a><a href="#contato">Contato</a>
+    </div>
+    <a href="#contato" class="btn pri nav-cta">Vamos conversar</a>
+    <button class="btn menu-btn" onclick="document.getElementById('navLinks').classList.toggle('show')" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<header class="wrap hero" id="topo">
+  <div>
+    <div class="pill"><i></i> Disponível para projetos e vagas remotas</div>
+    <h1>Eu transformo <span class="grad">trabalho repetitivo</span> em software que roda sozinho.</h1>
+    <p class="lead">Sou Jefferson Fabre, desenvolvedor por trás da DomDevLabs. Crio automações, extensões Chrome, painéis de dados e apps web — muitos deles nascidos de problemas reais da administração pública, onde trabalho há anos.</p>
+    <div class="ctas">
+      <a href="#projetos" class="btn pri">Ver projetos →</a>
+      <a href="#contato" class="btn">Entrar em contato</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="statProj">20+</b><span>projetos entregues</span></div>
+      <div class="stat"><b id="statExt">10+</b><span>extensões Chrome</span></div>
+      <div class="stat"><b>100%</b><span>focado em resultado</span></div>
+    </div>
+  </div>
+  <div class="code-card mono">
+    <div class="code-top"><i></i><i></i><i></i><span>domdevlabs/automacao.py</span></div>
+    <div class="code-body">
+<span class="c"># antes: 4 horas por dia copiando dados</span><br>
+<span class="k">from</span> domdevlabs <span class="k">import</span> <span class="f">robo</span><br><br>
+<span class="o">tarefa</span> = <span class="f">robo</span>.<span class="f">coletar</span>(<br>
+&nbsp;&nbsp;fonte=<span class="s">"portal gov"</span>,<br>
+&nbsp;&nbsp;paginas=<span class="s">"todas"</span>,<br>
+&nbsp;&nbsp;validar=<span class="k">True</span><br>
+)<br>
+<span class="o">tarefa</span>.<span class="f">exportar</span>(<span class="s">"relatorio.xlsx"</span>)<br>
+<span class="o">tarefa</span>.<span class="f">agendar</span>(<span class="s">"seg–sex 06:00"</span>)<br><br>
+<span class="c"># depois: 0 horas. ☕</span>
+    </div>
+  </div>
+</header>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Portfólio</div><h2>Projetos que já saíram do papel</h2></div>
+      <p>Clique em qualquer projeto para ver o que ele faz, a tecnologia usada e o problema que resolveu.</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap about">
+    <div class="avatar"><svg viewBox="0 0 100 100"><use href="#logo"/></svg></div>
+    <div>
+      <div class="eyebrow">Sobre mim</div>
+      <h2>Quem está por trás da DomDevLabs</h2>
+      <p>Sou <strong>Jefferson Gomes Fabre</strong>, licenciado em <strong>Física pela UFRJ</strong>, militar da Força Aérea Brasileira e <strong>pregoeiro certificado</strong> (Lei 14.133/2021). No dia a dia de compras públicas, vi de perto quanto tempo se perde com consultas manuais, planilhas copiadas à mão e portais lentos.</p>
+      <p>Foi aí que comecei a programar para resolver isso: robôs que consultam portais em lote, extensões que fazem em segundos o que levava horas, e painéis que mostram o orçamento com clareza. Hoje a DomDevLabs também cria <strong>produtos próprios</strong> — apps e extensões para qualquer pessoa usar.</p>
+      <p>Também sou professor de Física preparatório para o Colégio Naval — o que me ensinou a explicar coisas complexas de forma simples, inclusive para quem vai usar o sistema.</p>
+      <div class="diff">
+        <div><h4>🎯 Entendo o negócio</h4><span>Conheço o processo antes de escrever a primeira linha.</span></div>
+        <div><h4>⚡ Entrego rápido</h4><span>Do problema ao protótipo funcionando em dias.</span></div>
+        <div><h4>🧩 Ponta a ponta</h4><span>Coleta, tratamento, banco, painel e app.</span></div>
+        <div><h4>📚 Didático</h4><span>Documentação e treinamento de quem vai usar.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Habilidades</div><h2>Ferramentas que uso no dia a dia</h2></div>
+      <p>Escolho a ferramenta pelo problema — não o contrário.</p>
+    </div>
+    <div class="stack">
+      <div class="st"><div class="ic" style="background:rgba(255,122,26,.14)">🤖</div><h4>Automação & RPA</h4><ul><li>Python · Playwright</li><li>pandas · openpyxl</li><li>Web scraping</li><li>Tarefas agendadas</li></ul></div>
+      <div class="st"><div class="ic" style="background:rgba(47,124,246,.14)">🧩</div><h4>Extensões & Web</h4><ul><li>Chrome Extensions (MV3)</li><li>JavaScript · HTML · CSS</li><li>React · PWA</li><li>Vercel · GitHub</li></ul></div>
+      <div class="st"><div class="ic" style="background:rgba(34,197,94,.14)">📊</div><h4>Dados & Painéis</h4><ul><li>Google Apps Script</li><li>Google Sheets / Excel</li><li>Chart.js · matplotlib</li><li>SQL · Supabase · Postgres</li></ul></div>
+      <div class="st"><div class="ic" style="background:rgba(168,85,247,.14)">🔗</div><h4>APIs & IA</h4><ul><li>APIs REST (PNCP, Transparência)</li><li>Claude API (visão)</li><li>Bots de Telegram</li><li>Integração com Gmail</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="contact">
+      <div class="eyebrow">Contato</div>
+      <h2>Tem um processo que toma tempo demais?</h2>
+      <p>Vamos conversar. Estou aberto a vagas, projetos freelance e trabalho remoto — no Brasil ou no exterior.</p>
+      <div class="ctas">
+        <a class="btn pri" href="mailto:domdevlabs@gmail.com">✉️ domdevlabs@gmail.com</a>
+        <a class="btn" href="https://github.com/jeffersonfabre" target="_blank" rel="noopener">GitHub · jeffersonfabre</a>
+        <button class="btn" id="copyMail">Copiar e-mail</button>
+      </div>
+      <div class="mail">E-mail: <b>domdevlabs@gmail.com</b></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="font-size:15px"><svg width="24" height="24"><use href="#logo"/></svg><span><b>Dom</b>Dev<small>Labs</small></span></div>
+    <div>© <span id="ano"></span> DomDevLabs · Jefferson Fabre</div>
+    <div class="mono" style="opacity:.6">v1.0.0</div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)fechar()">
+  <div class="mbox" id="mbox"></div>
+</div>
+
+<script>
+/* =========================================================
+   PROJETOS — edite aqui.
+   tipo da prévia: ext | dash | 3d | mob | web | term | sheet | read
+   imagem: caminho/URL de um print real (opcional)
+   ========================================================= */
+const CATS = {
+  gov:  "Automação Pública",
+  ext:  "Extensões Chrome",
+  data: "Dados & Painéis",
+  app:  "Apps & Sites"
+};
+
+const PROJETOS = [
+  { id:"ata-full", nome:"Ata Full", cat:"gov", tipo:"ext", cor:"#2f7cf6", status:"ok", imagem:"",
+    resumo:"Extensão que busca na API do PNCP todas as Atas de Registro de Preços de uma unidade e organiza por pregão.",
+    faz:["Consulta a API pública do PNCP automaticamente","Organiza em árvore: Pregão → Atas → Itens","Trata a janela de 365 dias e a paginação da API","Exporta tudo para Excel e PDF"],
+    impacto:"Levantamento de atas que levava horas no portal passou a sair em minutos, com rastreabilidade.",
+    stack:["Chrome MV3","JavaScript","API PNCP","Excel/PDF"] },
+  { id:"contratoradar", nome:"ContratoRadar", cat:"gov", tipo:"ext", cor:"#22c55e", status:"ok", imagem:"",
+    resumo:"Monitora os contratos de uma unidade no Contratos.gov.br e avisa sobre vencimentos, aditivos e reajustes.",
+    faz:["Lista contratos por UASG com data de validade","Destaca janelas para termo aditivo","Detecta casos de reajuste e repactuação","Separa credenciamentos de contratos regulares e mostra garantias"],
+    impacto:"Nenhum contrato vence sem aviso — a gestão passa a ser preventiva.",
+    stack:["Chrome MV3","JavaScript","Contratos.gov.br"] },
+  { id:"certguard", nome:"CertGuard", cat:"gov", tipo:"dash", cor:"#a855f7", status:"ok", imagem:"",
+    resumo:"Painel e extensão que monitoram a validade das certidões de fornecedores (SICAF, CGU, Receita, FGTS).",
+    faz:["Acompanha a validade das certidões por CNPJ","Baixa certidões em lote","Painel visual com alertas por status","Cobre SICAF, CGU, RFB e FGTS"],
+    impacto:"Checagem de habilitação que era feita fornecedor por fornecedor virou um painel único.",
+    stack:["Chrome MV3","HTML/CSS/JS","Dashboard"] },
+  { id:"sicaf-lote", nome:"SICAF Consulta em Lote", cat:"gov", tipo:"ext", cor:"#f59e0b", status:"ok", imagem:"",
+    resumo:"Extensão que consulta dezenas de CNPJs no SICAF de uma vez e entrega o resultado em planilha.",
+    faz:["Recebe uma lista de CNPJs","Consulta um por um no Compras.gov.br sem intervenção","Serviço em segundo plano estável (chrome.alarms)","Gera planilha com a situação de cada fornecedor"],
+    impacto:"Consultas repetitivas que tomavam a manhã inteira rodam sozinhas.",
+    stack:["Chrome MV3","Service Worker","JavaScript"] },
+  { id:"cgu-cadin", nome:"Consultas CGU & CADIN", cat:"gov", tipo:"ext", cor:"#06b6d4", status:"ok", imagem:"",
+    resumo:"Duas extensões que automatizam a emissão de certidões da CGU e a consulta ao CADIN Federal.",
+    faz:["Preenchem os formulários dos portais automaticamente","Lidam com portais antigos (JSF)","Salvam os comprovantes organizados","Funcionam na sessão do próprio usuário"],
+    impacto:"Padroniza e acelera etapas obrigatórias de toda contratação.",
+    stack:["Chrome MV3","JavaScript","Automação de formulários"] },
+  { id:"coletor-pregao", nome:"Coletor de Propostas de Pregão", cat:"gov", tipo:"sheet", cor:"#ef4444", status:"ok", imagem:"",
+    resumo:"Ferramenta que coleta propostas e resultados de pregões no Compras.gov.br e monta uma planilha completa.",
+    faz:["Coleta propostas de todos os itens e fornecedores","Baixa anexos e termos dos vencedores","Gera planilha com Dashboard, Metodologia e Rastreabilidade","Usa a sessão gov.br do próprio usuário — sem guardar senha"],
+    impacto:"Pregões com quase 100 itens e dezenas de fornecedores consolidados automaticamente.",
+    stack:["Python","Playwright","openpyxl","Chrome MV3"] },
+  { id:"monitor-pncp", nome:"Monitor PNCP", cat:"gov", tipo:"term", cor:"#facc15", status:"ok", imagem:"",
+    resumo:"Robô agendado que acompanha publicações no PNCP e envia o resumo por e-mail.",
+    faz:["Roda sozinho em horário agendado","Navega e extrai dados do PNCP","Gera planilha com as novidades","Envia relatório por Gmail"],
+    impacto:"Acompanhamento diário de homologações sem ninguém precisar abrir o portal.",
+    stack:["Python","Playwright","openpyxl","Gmail","Agendador do Windows"] },
+  { id:"nf-ia", nome:"Verificador de Notas Fiscais com IA", cat:"gov", tipo:"term", cor:"#f472b6", status:"ok", imagem:"",
+    resumo:"Lê PDFs de notas fiscais com inteligência artificial, extrai os dados e gera relatório em Excel.",
+    faz:["Lê notas fiscais em PDF (inclusive digitalizadas)","Extrai campos estruturados com IA de visão","Confere os dados automaticamente","Consolida tudo em planilha"],
+    impacto:"Conferência manual de notas substituída por extração automática.",
+    stack:["Python","Claude API","Visão computacional","Excel"] },
+  { id:"oraculo", nome:"Oráculo", cat:"data", tipo:"dash", cor:"#2f7cf6", status:"ok", imagem:"",
+    resumo:"Site de consulta à execução orçamentária, alimentado automaticamente todos os dias por e-mail.",
+    faz:["Recebe o relatório diário do SERPRO por e-mail","Importa automaticamente para o banco em planilha (Apps Script)","Site consulta e apresenta os dados atualizados","Funciona em dias úteis às 6h, sem intervenção"],
+    impacto:"Dados de orçamento sempre atualizados de manhã, sem ninguém copiar planilha.",
+    stack:["Google Apps Script","Google Sheets","HTML/JS","Gmail"] },
+  { id:"cae-3d", nome:"CAE 3D", cat:"data", tipo:"3d", cor:"#ff7a1a", status:"ok", imagem:"",
+    resumo:"Painel 3D interativo que transforma a base de dados da unidade em uma visualização navegável.",
+    faz:["Lê a planilha-banco da unidade","Mostra os indicadores em 3D","Versão corporativa usando o mesmo banco","Visual pensado para apresentação à chefia"],
+    impacto:"Dados que ficavam escondidos em abas viraram uma visão clara e impactante.",
+    stack:["JavaScript","3D na web","Google Sheets"] },
+  { id:"dash-orc", nome:"Painel de Execução Orçamentária", cat:"data", tipo:"dash", cor:"#14b8a6", status:"ok", imagem:"",
+    resumo:"Dashboards e apresentações comparando a execução orçamentária entre unidades.",
+    faz:["Gráficos por natureza de despesa","Comparativo entre unidades e anos","Gráficos em alta qualidade para slides","Tema escuro profissional"],
+    impacto:"Reuniões de desempenho passaram a ter números claros e comparáveis.",
+    stack:["Chart.js","Python","matplotlib","PowerPoint"] },
+  { id:"escala", nome:"Escala de Serviço Automática", cat:"data", tipo:"sheet", cor:"#a855f7", status:"ok", imagem:"",
+    resumo:"Sistema em Google Sheets que monta a escala de serviço de cerca de 40 pessoas respeitando as regras.",
+    faz:["Escalas separadas para dias úteis, fins de semana e feriados","Regra: ninguém tira serviço em dias seguidos","Distribuição justa e automática","Visual por cores para leitura rápida"],
+    impacto:"Escala montada em minutos, sem conflitos e sem reclamação de injustiça.",
+    stack:["Google Sheets","Apps Script","Fórmulas"] },
+  { id:"contratos-sheets", nome:"Gestão de Contratos em Planilha", cat:"data", tipo:"sheet", cor:"#22c55e", status:"ok", imagem:"",
+    resumo:"Abas automatizadas para Formalização, Termo Aditivo e Apostilamento com contagem de prazos.",
+    faz:["Conta dias desde o envio de cada documento","Congela o prazo quando o status muda","Visão por fase do processo","Consolidação de inventário por número de patrimônio"],
+    impacto:"Ninguém mais perde prazo de processo em andamento.",
+    stack:["Google Apps Script","Google Sheets"] },
+  { id:"colheita", nome:"Colheita", cat:"ext", tipo:"ext", cor:"#84cc16", status:"ok", imagem:"",
+    resumo:"Extensão que raspa dados de qualquer site, avança as páginas sozinha e salva tudo em Excel.",
+    faz:["Detecta tabelas e listas automaticamente","Avança por botão de próxima página ou rolagem infinita","Gera .xlsx sem bibliotecas externas","Todas as funções liberadas"],
+    impacto:"Qualquer pessoa extrai dados de um site sem saber programar.",
+    stack:["Chrome MV3","JavaScript","XLSX"] },
+  { id:"grampo", nome:"Grampo", cat:"ext", tipo:"ext", cor:"#ef4444", status:"ok", imagem:"",
+    resumo:"Junta vários PDFs, reduz o tamanho, respeita o limite de 9,5 MB e numera as páginas.",
+    faz:["Arraste os PDFs ou escolha no computador","Comprime em etapas até caber no limite","Divide em partes com numeração contínua","Funciona 100% offline — nada sai do computador"],
+    impacto:"Montar processos para envio em sistemas com limite de tamanho virou um clique.",
+    stack:["Chrome MV3","pdf-lib","pdf.js"] },
+  { id:"agenda-bordo", nome:"Agenda de Bordo", cat:"ext", tipo:"ext", cor:"#2f7cf6", status:"ok", imagem:"",
+    resumo:"Agenda e lista de tarefas diária dentro do Chrome, com histórico, etiquetas e lembretes.",
+    faz:["Tarefas recorrentes e etiquetas #tag","Pendências passam sozinhas para o dia seguinte","Lembretes e notificações","Relatório em Markdown por período e busca com filtros"],
+    impacto:"Organização do dia sem sair do navegador.",
+    stack:["Chrome MV3","chrome.storage","JavaScript"] },
+  { id:"sublinha", nome:"Sublinha", cat:"ext", tipo:"read", cor:"#facc15", status:"ok", imagem:"",
+    resumo:"Leitor para aprender inglês: clique na palavra desconhecida e veja tradução, áudio e fonética.",
+    faz:["Importa livros .epub e .txt","Clique para traduzir com áudio e fonética","Caderno de palavras com revisão espaçada","Meta diária e exportação para Anki"],
+    impacto:"Aprender vocabulário lendo o que se gosta, 10 minutos por dia.",
+    stack:["Chrome MV3","JavaScript","Revisão espaçada"] },
+  { id:"lumen", nome:"Lumen", cat:"ext", tipo:"web", cor:"#8b5cf6", status:"dev", imagem:"",
+    resumo:"Modo escuro universal e conforto de leitura para qualquer site — produto freemium para o mundo todo.",
+    faz:["Tema escuro em qualquer site","Ajuste de fonte e espaçamento","Filtro de luz azul","Versão paga: temas próprios, regras por site e agendamento"],
+    impacto:"Produto pensado para a Chrome Web Store com público global.",
+    stack:["Chrome MV3","CSS","Freemium"] },
+  { id:"compras-mercado", nome:"Compras Mercado", cat:"app", tipo:"mob", cor:"#22c55e", status:"ok", imagem:"",
+    resumo:"App web de lista de compras com tema claro/escuro e preços médios da região.",
+    faz:["Várias listas com itens marcáveis","Onboarding e preferências","Tema claro e escuro","Dados guardados no próprio aparelho"],
+    impacto:"Lista de compras simples, rápida e que funciona no celular.",
+    stack:["JavaScript","PWA","Vercel","GitHub"],
+    links:[{t:"Código no GitHub",u:"https://github.com/jeffersonfabre/compras-mercado"}] },
+  { id:"rumo-b2", nome:"Rumo ao B2", cat:"app", tipo:"mob", cor:"#2f7cf6", status:"ok", imagem:"",
+    resumo:"App de estudo de inglês com trilha focada em atingir o nível B2.",
+    faz:["Trilha de estudo organizada por objetivo","Progresso salvo no navegador","Backup do progresso","Publicado e acessível pelo celular"],
+    impacto:"Estudo guiado e mensurável rumo a uma meta de proficiência.",
+    stack:["JavaScript","Vercel","GitHub"],
+    links:[{t:"Código no GitHub",u:"https://github.com/jeffersonfabre/tdie-b2"}] },
+  { id:"diario", nome:"Diário Tirzepatida", cat:"app", tipo:"mob", cor:"#ec4899", status:"ok", imagem:"",
+    resumo:"PWA para registrar peso e aplicações, com gráfico de evolução e relatório em PDF.",
+    faz:["Registro de peso e de aplicações","Cálculo de IMC e gráfico de evolução","Relatório em PDF com nome do usuário","Sem login: cada pessoa usa no próprio celular"],
+    impacto:"Produto pronto para venda, distribuído por link.",
+    stack:["PWA","JavaScript","PDF","Vercel"],
+    links:[{t:"Abrir o app",u:"https://diario-tirzepatida.vercel.app"}] },
+  { id:"barbearia", nome:"App de Barbearia", cat:"app", tipo:"mob", cor:"#f59e0b", status:"ok", imagem:"",
+    resumo:"App de agendamento para barbearia com agenda do barbeiro, financeiro e fidelidade.",
+    faz:["Cliente agenda o horário pelo celular","Agenda do barbeiro organizada","Módulo de gestão e financeiro","Programa de fidelidade e planos"],
+    impacto:"Agendamento sem troca de mensagens e controle do caixa em um só lugar.",
+    stack:["React","Mobile","WhatsApp"] },
+  { id:"sintonia", nome:"Sintonia Perfumaria", cat:"app", tipo:"web", cor:"#d946ef", status:"ok", imagem:"",
+    resumo:"Site vitrine de perfumes importados com pedido pelo WhatsApp e pagamento na entrega.",
+    faz:["Catálogo de perfumes com fotos","Pedido direto pelo WhatsApp","Informações de entrega no Rio de Janeiro","Visual elegante e responsivo"],
+    impacto:"Pequeno negócio com presença online profissional.",
+    stack:["HTML","CSS","JavaScript"] },
+  { id:"loja-perfumes", nome:"Loja de Perfumes com Painel", cat:"app", tipo:"web", cor:"#f97316", status:"dev", imagem:"",
+    resumo:"Loja online com painel próprio para o dono cadastrar e editar produtos sozinho.",
+    faz:["Painel para cadastrar e editar produtos","Banco de dados na nuvem","Vendas fechadas pelo WhatsApp","Hospedagem gratuita e rápida"],
+    impacto:"Autonomia total para o dono, sem mensalidade de plataforma.",
+    stack:["Supabase","Vercel","JavaScript"] },
+  { id:"bot-tesouro", nome:"Bot do Tesouro Gerencial", cat:"gov", tipo:"term", cor:"#0ea5e9", status:"dev", imagem:"",
+    resumo:"Bot de Telegram que responde consultas de execução orçamentária, notas de crédito e de empenho.",
+    faz:["Consultas por mensagem no grupo","Filtro por unidade e UG responsável","Base atualizada por e-mail diário","Identidade visual institucional"],
+    impacto:"Informação orçamentária na mão de quem precisa, na hora.",
+    stack:["Telegram Bot","Python","Google Sheets"] }
+];
+
+/* ---------- prévias ilustradas ---------- */
+function mock(p){
+  const url = `<div class="bar"><i></i><i></i><i></i><div class="url">${p.id}.app</div></div>`;
+  const L = (w,c)=>`<div class="ln${c?' c':''}" style="width:${w}%"></div>`;
+  switch(p.tipo){
+    case "ext": return `<div class="mk mk-ext"><div class="win">${url}<div class="in">
+      <div class="page">${L(70)}${L(90)}${L(55)}<div class="blk" style="height:38%;margin:6px 0"></div>${L(80)}${L(60)}</div>
+      <div class="pop"><div class="hd"><i></i>${p.nome}</div>
+        ${[1,2,3,4].map(i=>`<div class="row"><b></b><span style="flex:1;height:4px;background:rgba(148,163,184,.25);border-radius:2px"></span></div>`).join("")}
+        <div class="go">Executar</div></div></div></div></div>`;
+    case "dash": { const h=[45,70,55,88,62,95,74]; return `<div class="mk mk-dash"><div class="win">${url}<div class="in">
+      <div class="side"><div class="blk" style="background:var(--c);opacity:.7"></div><div class="blk"></div><div class="blk"></div><div class="blk"></div></div>
+      <div class="main"><div class="kpis">${["98%","1.2k","R$ 4,1M"].map(v=>`<div class="kpi blk">indicador<b>${v}</b></div>`).join("")}</div>
+      <div class="chart blk">${h.map(x=>`<span style="height:${x}%"></span>`).join("")}</div></div></div></div></div>`; }
+    case "3d": return `<div class="mk mk-3d"><div class="win">${url}<div class="in"><div class="iso">${[40,70,55,95,65].map(x=>`<span style="height:${x}px"></span>`).join("")}</div></div></div></div>`;
+    case "mob": { const tela=()=>`<div class="ph"><div class="top">${p.nome}</div>${[1,0,1,0,0].map(d=>`<div class="it"><i class="${d?'d':''}"></i><u></u></div>`).join("")}<div class="fab"></div></div>`; return `<div class="mk mk-mob">${tela()}${tela()}</div>`; }
+    case "web": return `<div class="mk mk-web"><div class="win">${url}<div class="in"><div class="hero2"><div class="t">${p.nome}</div>${L(60)}${L(40)}<div class="b"></div></div><div class="prods"><div></div><div></div><div></div><div></div></div></div></div></div>`;
+    case "term": return `<div class="mk mk-term"><div class="win"><div class="bar"><i></i><i></i><i></i><div class="url">terminal</div></div><div class="in">
+      <div><span class="y">$</span> <span class="w">python ${p.id}.py</span></div>
+      <div>→ conectando à fonte de dados...</div><div class="g">✔ 248 registros coletados</div>
+      <div>→ validando e tratando...</div><div class="g">✔ 0 erros encontrados</div>
+      <div class="g">✔ relatorio.xlsx gerado</div><div><span class="y">$</span> <span class="w">▌</span></div></div></div></div>`;
+    case "sheet": { const r=[["Item","Status","Valor","Resp."],["001","p","v",""],["002","","x","p"],["003","v","p",""],["004","p","","x"],["005","x","v","p"],["006","","p","v"]];
+      return `<div class="mk mk-sheet"><div class="win"><div class="bar"><i></i><i></i><i></i><div class="url">planilha.xlsx</div></div><div class="in"><table>${r.map((row,i)=>`<tr>${row.map((c,j)=>i===0||j===0?`<td>${c}</td>`:`<td class="${c}">${c?'●':''}</td>`).join("")}</tr>`).join("")}</table></div></div></div>`; }
+    case "read": return `<div class="mk mk-read"><div class="win">${url}<div class="in">
+      <div>All animals are equal, but some animals are <mark>more equal</mark> than others. The creatures outside looked from pig to man, and from man to <mark>pig</mark> again...</div>
+      <div class="tip"><b>more equal</b> · “mais iguais” 🔊 <span style="opacity:.6">[mɔːr ˈiːkwəl]</span></div></div></div></div>`;
+  }
+  return "";
+}
+function thumb(p){
+  const st = `<span class="status ${p.status}">${p.status==="ok"?"● Concluído":"◐ Em desenvolvimento"}</span>`;
+  const body = p.imagem ? `<img src="${p.imagem}" alt="Tela do projeto ${p.nome}" loading="lazy">` : mock(p);
+  return `<div class="thumb" style="--c:${p.cor}">${st}${body}</div>`;
+}
+
+/* ---------- filtros e grade ---------- */
+let filtro = "todos";
+function renderFiltros(){
+  const cont = {todos:PROJETOS.length};
+  PROJETOS.forEach(p=>cont[p.cat]=(cont[p.cat]||0)+1);
+  const opts = [["todos","Todos"],...Object.entries(CATS)];
+  document.getElementById("filters").innerHTML = opts.map(([k,v])=>
+    `<button class="chip ${filtro===k?'on':''}" data-k="${k}">${v}<em>${cont[k]||0}</em></button>`).join("");
+  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{filtro=b.dataset.k;renderFiltros();renderGrid();});
+}
+function renderGrid(){
+  const lista = PROJETOS.filter(p=>filtro==="todos"||p.cat===filtro);
+  document.getElementById("grid").innerHTML = lista.map((p,i)=>`
+    <article class="card" style="animation-delay:${i*40}ms" onclick="abrir('${p.id}')" tabindex="0" onkeydown="if(event.key==='Enter')abrir('${p.id}')">
+      ${thumb(p)}
+      <div class="card-body">
+        <div class="cat">${CATS[p.cat]}</div>
+        <h3>${p.nome}</h3>
+        <p>${p.resumo}</p>
+        <div class="tags">${p.stack.slice(0,4).map(s=>`<span class="tag">${s}</span>`).join("")}</div>
+      </div>
+    </article>`).join("");
+}
+
+/* ---------- modal ---------- */
+function abrir(id){
+  const p = PROJETOS.find(x=>x.id===id);
+  document.getElementById("mbox").innerHTML = `
+    <button class="mclose" onclick="fechar()" aria-label="Fechar">×</button>
+    ${thumb(p)}
+    <div class="mcontent">
+      <div class="cat" style="color:var(--blue2);font-weight:600;font-size:13px">${CATS[p.cat]}</div>
+      <h3>${p.nome}</h3>
+      <p>${p.resumo}</p>
+      <div class="mcols">
+        <div><h4>O que faz</h4><ul>${p.faz.map(f=>`<li>${f}</li>`).join("")}</ul></div>
+        <div>
+          <div class="impact"><b>Resultado</b>${p.impacto}</div>
+          <h4>Tecnologias</h4><div class="tags" style="margin-top:0">${p.stack.map(s=>`<span class="tag">${s}</span>`).join("")}</div>
+        </div>
+      </div>
+      <div class="mlinks">
+        ${(p.links||[]).map(l=>`<a class="btn pri" href="${l.u}" target="_blank" rel="noopener">${l.t} ↗</a>`).join("")}
+        <a class="btn" href="#contato" onclick="fechar()">Quero algo parecido</a>
+      </div>
+    </div>`;
+  document.getElementById("modal").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function fechar(){document.getElementById("modal").classList.remove("open");document.body.style.overflow="";}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")fechar();});
+
+/* ---------- extras ---------- */
+document.getElementById("copyMail").onclick = async (e)=>{
+  try{ await navigator.clipboard.writeText("domdevlabs@gmail.com"); e.target.textContent="✔ Copiado!"; }
+  catch{ e.target.textContent="domdevlabs@gmail.com"; }
+  setTimeout(()=>e.target.textContent="Copiar e-mail",2200);
+};
+document.getElementById("ano").textContent = new Date().getFullYear();
+document.getElementById("statProj").textContent = PROJETOS.length+"+";
+document.getElementById("statExt").textContent = PROJETOS.filter(p=>p.stack.includes("Chrome MV3")).length+"+";
+document.querySelectorAll(".nav-links a").forEach(a=>a.onclick=()=>document.getElementById("navLinks").classList.remove("show"));
+
+renderFiltros(); renderGrid();
+</script>
+</body>
+</html>
