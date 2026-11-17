@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
-   DomDevLabs — Portfólio  ·  v1.1.0
+   DomDevLabs — Portfólio  ·  v1.2.0
    Para trocar a imagem de um projeto: preencha o campo
    "imagem" no array PROJETOS (ex.: "img/ata-full.png").
    Vazio = mostra a prévia ilustrada automática.
@@ -366,7 +366,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   <div class="wrap">
     <div class="brand" style="font-size:15px"><svg width="24" height="24"><use href="#logo"/></svg><span><b>Dom</b>Dev<small>Labs</small></span></div>
     <div>© <span id="ano"></span> DomDevLabs · Jefferson Fabre</div>
-    <div class="mono" style="opacity:.6">v1.1.0</div>
+    <div class="mono" style="opacity:.6">v1.2.0</div>
   </div>
 </footer>
 
@@ -433,7 +433,7 @@ const PROJETOS = [
     faz:["Recebe o relatório diário do SERPRO por e-mail","Importa automaticamente para o banco em planilha (Apps Script)","Site consulta e apresenta os dados atualizados","Funciona em dias úteis às 6h, sem intervenção"],
     impacto:"Dados de orçamento sempre atualizados de manhã, sem ninguém copiar planilha.",
     stack:["Google Apps Script","Google Sheets","HTML/JS","Gmail"] },
-  { id:"cae-3d", nome:"CAE 3D", cat:"data", tipo:"3d", cor:"#ff7a1a", status:"ok", imagem:"",
+  { id:"cae-3d", nome:"Painel Interativo 3D", cat:"data", tipo:"3d", cor:"#ff7a1a", status:"ok", imagem:"",
     resumo:"Painel 3D interativo que transforma a base de dados da unidade em uma visualização navegável.",
     faz:["Lê a planilha-banco da unidade","Mostra os indicadores em 3D","Versão corporativa usando o mesmo banco","Visual pensado para apresentação à chefia"],
     impacto:"Dados que ficavam escondidos em abas viraram uma visão clara e impactante.",
@@ -443,11 +443,6 @@ const PROJETOS = [
     faz:["Gráficos por natureza de despesa","Comparativo entre unidades e anos","Gráficos em alta qualidade para slides","Tema escuro profissional"],
     impacto:"Reuniões de desempenho passaram a ter números claros e comparáveis.",
     stack:["Chart.js","Python","matplotlib","PowerPoint"] },
-  { id:"escala", nome:"Escala de Serviço Automática", cat:"data", tipo:"sheet", cor:"#a855f7", status:"ok", imagem:"",
-    resumo:"Sistema em Google Sheets que monta a escala de serviço de cerca de 40 pessoas respeitando as regras.",
-    faz:["Escalas separadas para dias úteis, fins de semana e feriados","Regra: ninguém tira serviço em dias seguidos","Distribuição justa e automática","Visual por cores para leitura rápida"],
-    impacto:"Escala montada em minutos, sem conflitos e sem reclamação de injustiça.",
-    stack:["Google Sheets","Apps Script","Fórmulas"] },
   { id:"contratos-sheets", nome:"Gestão de Contratos em Planilha", cat:"data", tipo:"sheet", cor:"#22c55e", status:"ok", imagem:"",
     resumo:"Abas automatizadas para Formalização, Termo Aditivo e Apostilamento com contagem de prazos.",
     faz:["Conta dias desde o envio de cada documento","Congela o prazo quando o status muda","Visão por fase do processo","Consolidação de inventário por número de patrimônio"],
