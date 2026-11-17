@@ -8,4 +8,4 @@ Portfólio de projetos de **Jefferson Fabre** (DomDevLabs): automação, extens�
 
 Contato: domdevlabs@gmail.com · (21) 99532-1173
 
-v1.4.0
+v1.5.0

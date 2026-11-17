@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
-   DomDevLabs — Portfólio  ·  v1.4.0
+   DomDevLabs — Portfólio  ·  v1.5.0
    Para trocar a imagem de um projeto: preencha o campo
    "imagem" no array PROJETOS (ex.: "img/ata-full.png").
    Vazio = mostra a prévia ilustrada automática.
@@ -366,7 +366,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   <div class="wrap">
     <div class="brand" style="font-size:15px"><svg width="24" height="24"><use href="#logo"/></svg><span><b>Dom</b>Dev<small>Labs</small></span></div>
     <div>© <span id="ano"></span> DomDevLabs · Jefferson Fabre</div>
-    <div class="mono" style="opacity:.6">v1.4.0</div>
+    <div class="mono" style="opacity:.6">v1.5.0</div>
   </div>
 </footer>
 
@@ -473,13 +473,13 @@ const PROJETOS = [
     faz:["Tema escuro em qualquer site","Ajuste de fonte e espaçamento","Filtro de luz azul","Versão paga: temas próprios, regras por site e agendamento"],
     impacto:"Produto pensado para a Chrome Web Store com público global.",
     stack:["Chrome MV3","CSS","Freemium"] },
-  { id:"compras-mercado", nome:"Compras Mercado", cat:"app", tipo:"mob", cor:"#22c55e", status:"ok", imagem:"",
+  { id:"compras-mercado", nome:"Compras Mercado", cat:"app", tipo:"mob", cor:"#22c55e", status:"ok", imagem:"img/compras-mercado.jpg",
     resumo:"App web de lista de compras com tema claro/escuro e preços médios da região.",
     faz:["Várias listas com itens marcáveis","Onboarding e preferências","Tema claro e escuro","Dados guardados no próprio aparelho"],
     impacto:"Lista de compras simples, rápida e que funciona no celular.",
     stack:["JavaScript","PWA","Vercel","GitHub"],
     links:[{t:"Código no GitHub",u:"https://github.com/jeffersonfabre/compras-mercado"}] },
-  { id:"rumo-b2", nome:"Rumo ao B2", cat:"app", tipo:"mob", cor:"#2f7cf6", status:"ok", imagem:"",
+  { id:"rumo-b2", nome:"Rumo ao B2", cat:"app", tipo:"mob", cor:"#2f7cf6", status:"ok", imagem:"img/rumo-b2.jpg",
     resumo:"App de estudo de inglês com trilha focada em atingir o nível B2.",
     faz:["Trilha de estudo organizada por objetivo","Progresso salvo no navegador","Backup do progresso","Publicado e acessível pelo celular"],
     impacto:"Estudo guiado e mensurável rumo a uma meta de proficiência.",
@@ -497,11 +497,12 @@ const PROJETOS = [
     impacto:"Estúdio inteiro em um app: agenda sem conflito de horário, caixa e estoque fechando sozinhos.",
     stack:["Expo / React Native","Supabase","Postgres","Vercel"],
     links:[{t:"Abrir o app",u:"https://camila-souza-nail.vercel.app/gestao"}] },
-  { id:"barbearia", nome:"App de Barbearia", cat:"app", tipo:"mob", cor:"#f59e0b", status:"ok", imagem:"",
-    resumo:"App de agendamento para barbearia com agenda do barbeiro, financeiro e fidelidade.",
-    faz:["Cliente agenda o horário pelo celular","Agenda do barbeiro organizada","Módulo de gestão e financeiro","Programa de fidelidade e planos"],
-    impacto:"Agendamento sem troca de mensagens e controle do caixa em um só lugar.",
-    stack:["React","Mobile","WhatsApp"] },
+  { id:"barbearia", nome:"Dom Iório Barbearia", cat:"app", tipo:"mob", cor:"#f59e0b", status:"ok", imagem:"img/barbearia.jpg",
+    resumo:"Site da barbearia com agendamento online, mais um app com agenda do barbeiro, financeiro e fidelidade.",
+    faz:["Página de entrada com agendamento, Instagram, WhatsApp e rota","Cliente agenda o horário pelo celular","Agenda do barbeiro, gestão e financeiro","Programa de fidelidade e planos"],
+    impacto:"Agendamento sem troca de mensagens e a barbearia com presença online profissional.",
+    stack:["HTML/CSS","Google Apps Script","React","GitHub Pages"],
+    links:[{t:"Abrir o site",u:"https://domiorio-barbearia.github.io"}] },
   { id:"sintonia", nome:"Sintonia Perfumaria", cat:"app", tipo:"web", cor:"#d946ef", status:"ok", imagem:"",
     resumo:"Site vitrine de perfumes importados com pedido pelo WhatsApp e pagamento na entrega.",
     faz:["Catálogo de perfumes com fotos","Pedido direto pelo WhatsApp","Informações de entrega no Rio de Janeiro","Visual elegante e responsivo"],
