@@ -6,6 +6,6 @@ Portfólio de projetos de **Jefferson Fabre** (DomDevLabs): automação, extens�
 - Para editar projetos: altere o array `PROJETOS` no final do `index.html`
 - Para usar prints reais: coloque as imagens em `img/` e preencha o campo `imagem` (ex.: `"img/ata-full.png"`)
 
-Contato: domdevlabs@gmail.com
+Contato: domdevlabs@gmail.com · (21) 99532-1173
 
-v1.0.0
+v1.1.0
