@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
-   DomDevLabs — Portfólio  ·  v1.2.0
+   DomDevLabs — Portfólio  ·  v1.3.0
    Para trocar a imagem de um projeto: preencha o campo
    "imagem" no array PROJETOS (ex.: "img/ata-full.png").
    Vazio = mostra a prévia ilustrada automática.
@@ -366,7 +366,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   <div class="wrap">
     <div class="brand" style="font-size:15px"><svg width="24" height="24"><use href="#logo"/></svg><span><b>Dom</b>Dev<small>Labs</small></span></div>
     <div>© <span id="ano"></span> DomDevLabs · Jefferson Fabre</div>
-    <div class="mono" style="opacity:.6">v1.2.0</div>
+    <div class="mono" style="opacity:.6">v1.3.0</div>
   </div>
 </footer>
 
@@ -491,6 +491,12 @@ const PROJETOS = [
     impacto:"Produto pronto para venda, distribuído por link.",
     stack:["PWA","JavaScript","PDF","Vercel"],
     links:[{t:"Abrir o app",u:"https://diario-tirzepatida.vercel.app"}] },
+  { id:"camila-nail", nome:"Camila Souza Nail Designer", cat:"app", tipo:"mob", cor:"#e879a6", status:"ok", imagem:"",
+    resumo:"App de agendamento e gestão para estúdio de unhas — iOS, Android e web com um único código.",
+    faz:["Cliente agenda serviço, adicionais, dia e horário livre — com lembrete 2h antes","Agenda da profissional: confirmar, atender, encaixe e bloqueios","Comandas com serviços e produtos, caixa por forma de pagamento","Relatórios com comissão por profissional e estoque que se atualiza sozinho"],
+    impacto:"Estúdio inteiro em um app: agenda sem conflito de horário, caixa e estoque fechando sozinhos.",
+    stack:["Expo / React Native","Supabase","Postgres","Vercel"],
+    links:[{t:"Abrir o app",u:"https://camila-souza-nail.vercel.app/gestao"}] },
   { id:"barbearia", nome:"App de Barbearia", cat:"app", tipo:"mob", cor:"#f59e0b", status:"ok", imagem:"",
     resumo:"App de agendamento para barbearia com agenda do barbeiro, financeiro e fidelidade.",
     faz:["Cliente agenda o horário pelo celular","Agenda do barbeiro organizada","Módulo de gestão e financeiro","Programa de fidelidade e planos"],
@@ -501,11 +507,12 @@ const PROJETOS = [
     faz:["Catálogo de perfumes com fotos","Pedido direto pelo WhatsApp","Informações de entrega no Rio de Janeiro","Visual elegante e responsivo"],
     impacto:"Pequeno negócio com presença online profissional.",
     stack:["HTML","CSS","JavaScript"] },
-  { id:"loja-perfumes", nome:"Loja de Perfumes com Painel", cat:"app", tipo:"web", cor:"#f97316", status:"dev", imagem:"",
-    resumo:"Loja online com painel próprio para o dono cadastrar e editar produtos sozinho.",
-    faz:["Painel para cadastrar e editar produtos","Banco de dados na nuvem","Vendas fechadas pelo WhatsApp","Hospedagem gratuita e rápida"],
-    impacto:"Autonomia total para o dono, sem mensalidade de plataforma.",
-    stack:["Supabase","Vercel","JavaScript"] },
+  { id:"araleo", nome:"Araléo Fragrances", cat:"app", tipo:"web", cor:"#c9a24a", status:"ok", imagem:"",
+    resumo:"Loja online de perfumes árabes com sacola, pedido pelo WhatsApp e painel completo para o vendedor.",
+    faz:["Catálogo de perfumes e decants com fotos e busca","Cliente monta a sacola e finaliza o pedido pelo WhatsApp","Painel do vendedor: produtos, estoque, pedidos e vendas","Relatórios de vendas e app instalável no celular (PWA)"],
+    impacto:"O dono cadastra e vende sozinho, com estoque e vendas controlados, sem mensalidade de plataforma.",
+    stack:["Supabase","JavaScript","PWA","Vercel"],
+    links:[{t:"Abrir a loja",u:"https://araleo-fragrances.vercel.app"}] },
   { id:"bot-tesouro", nome:"Bot do Tesouro Gerencial", cat:"gov", tipo:"term", cor:"#0ea5e9", status:"dev", imagem:"",
     resumo:"Bot de Telegram que responde consultas de execução orçamentária, notas de crédito e de empenho.",
     faz:["Consultas por mensagem no grupo","Filtro por unidade e UG responsável","Base atualizada por e-mail diário","Identidade visual institucional"],
