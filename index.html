@@ -5,11 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DomDevLabs — Portfólio de Jefferson Fabre</title>
 <meta name="description" content="Portfólio da DomDevLabs: automação, extensões Chrome, dashboards de dados e apps web por Jefferson Fabre.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0a0f1c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DomDevLabs">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:title" content="DomDevLabs — Portfólio de Jefferson Fabre">
+<meta property="og:description" content="Automação, extensões Chrome, painéis de dados e apps web.">
+<meta property="og:image" content="/icons/logo-completo-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
-   DomDevLabs — Portfólio  ·  v1.6.0
+   DomDevLabs — Portfólio  ·  v1.7.0
    Para trocar a imagem de um projeto: preencha o campo
    "imagem" no array PROJETOS (ex.: "img/ata-full.png").
    Vazio = mostra a prévia ilustrada automática.
@@ -406,7 +419,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   <div class="wrap">
     <div class="brand" style="font-size:15px"><svg width="24" height="24"><use href="#logo"/></svg><span><b>Dom</b>Dev<small>Labs</small></span></div>
     <div>© <span id="ano"></span> DomDevLabs · Jefferson Fabre</div>
-    <div class="mono" style="opacity:.6">v1.6.0</div>
+    <div class="mono" style="opacity:.6">v1.7.0</div>
   </div>
 </footer>
 
@@ -717,6 +730,7 @@ function renderDestaque(){
 }
 
 renderDestaque(); renderFiltros(); renderGrid();
+if('serviceWorker' in navigator && location.protocol==='https:'){navigator.serviceWorker.register('/sw.js').catch(()=>{});}
 </script>
 </body>
 </html>
