@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
-   DomDevLabs — Portfólio  ·  v1.5.0
+   DomDevLabs — Portfólio  ·  v1.6.0
    Para trocar a imagem de um projeto: preencha o campo
    "imagem" no array PROJETOS (ex.: "img/ata-full.png").
    Vazio = mostra a prévia ilustrada automática.
@@ -216,6 +216,45 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 .impact b{color:var(--txt);display:block;margin-bottom:4px;font-family:Sora}
 .mlinks{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
 
+
+/* destaque */
+.feat{background:linear-gradient(135deg,rgba(47,124,246,.16),rgba(255,122,26,.10));border:1px solid rgba(127,178,255,.28);border-radius:28px;padding:30px;margin-bottom:40px;position:relative;overflow:hidden}
+.feat-top{display:grid;grid-template-columns:1.25fr 1fr;gap:34px;align-items:center}
+.feat-img{border-radius:18px;overflow:hidden;border:1px solid var(--line);cursor:zoom-in;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.feat-img img{width:100%;display:block}
+.feat-badge{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,var(--orange),#ff5a1a);padding:6px 12px;border-radius:99px;margin-bottom:14px}
+.feat h3{font-size:clamp(30px,3.6vw,44px);margin-bottom:12px}
+.feat .lead2{color:var(--mut);font-size:16px;margin-bottom:18px}
+.feat-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.feat-kpis div{background:rgba(10,15,28,.5);border:1px solid var(--line);border-radius:12px;padding:12px}
+.feat-kpis b{font-family:Sora;font-size:22px;display:block}
+.feat-kpis span{font-size:12px;color:var(--mut)}
+.feat-mods{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+.mod{background:rgba(10,15,28,.55);border:1px solid var(--line);border-radius:16px;padding:16px}
+.mod h4{font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.mod h4 i{width:9px;height:9px;border-radius:3px;background:var(--orange)}
+.mod ul{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:#cbd5e1}
+.mod li::before{content:"›";color:var(--blue2);margin-right:7px;font-weight:700}
+.soon{font-size:10px;font-weight:700;background:rgba(250,204,21,.18);color:#fde68a;padding:2px 7px;border-radius:99px;margin-left:auto}
+.feat-feats{display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;margin-top:22px;list-style:none;font-size:14px}
+.feat-feats li{padding-left:22px;position:relative}
+.feat-feats li::before{content:"✓";position:absolute;left:0;color:#4ade80;font-weight:800}
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:26px}
+.gal figure{border-radius:12px;overflow:hidden;border:1px solid var(--line);cursor:zoom-in;background:#0b1220;transition:.2s;position:relative}
+.gal figure:hover{transform:translateY(-3px);border-color:rgba(255,122,26,.5)}
+.gal img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block}
+.gal figcaption{font-size:11.5px;color:var(--mut);padding:7px 9px;line-height:1.35}
+.mgal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.mgal img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:10px;border:1px solid var(--line);cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(3,6,14,.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:24px;gap:14px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(1400px,96vw);max-height:80vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+.lightbox p{color:#cbd5e1;font-size:15px}
+.lb-nav{display:flex;gap:10px}
+.featured-card{outline:2px solid rgba(255,122,26,.55)}
+@media (max-width:1000px){.feat-top{grid-template-columns:1fr}.feat-mods{grid-template-columns:1fr 1fr}.gal{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.feat{padding:20px}.feat-mods,.feat-feats{grid-template-columns:1fr}.gal,.mgal{grid-template-columns:1fr 1fr}.feat-kpis b{font-size:18px}}
+
 @media (max-width:900px){
   .hero{grid-template-columns:1fr;padding-top:56px}
   .code-card{transform:none}
@@ -306,6 +345,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
       <div><div class="eyebrow">Portfólio</div><h2>Projetos que já saíram do papel</h2></div>
       <p>Clique em qualquer projeto para ver o que ele faz, a tecnologia usada e o problema que resolveu.</p>
     </div>
+    <div id="destaque"></div>
     <div class="filters" id="filters"></div>
     <div class="grid" id="grid"></div>
   </div>
@@ -366,9 +406,15 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   <div class="wrap">
     <div class="brand" style="font-size:15px"><svg width="24" height="24"><use href="#logo"/></svg><span><b>Dom</b>Dev<small>Labs</small></span></div>
     <div>© <span id="ano"></span> DomDevLabs · Jefferson Fabre</div>
-    <div class="mono" style="opacity:.6">v1.5.0</div>
+    <div class="mono" style="opacity:.6">v1.6.0</div>
   </div>
 </footer>
+
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)lbClose()">
+  <img id="lbImg" alt="">
+  <p id="lbTxt"></p>
+  <div class="lb-nav"><button class="btn" onclick="lbMove(-1)">← Anterior</button><button class="btn" onclick="lbClose()">Fechar</button><button class="btn" onclick="lbMove(1)">Próxima →</button></div>
+</div>
 
 <div class="modal" id="modal" onclick="if(event.target===this)fechar()">
   <div class="mbox" id="mbox"></div>
@@ -433,11 +479,25 @@ const PROJETOS = [
     faz:["Recebe o relatório diário do SERPRO por e-mail","Importa automaticamente para o banco em planilha (Apps Script)","Site consulta e apresenta os dados atualizados","Funciona em dias úteis às 6h, sem intervenção"],
     impacto:"Dados de orçamento sempre atualizados de manhã, sem ninguém copiar planilha.",
     stack:["Google Apps Script","Google Sheets","HTML/JS","Gmail"] },
-  { id:"cae-3d", nome:"Painel Interativo 3D", cat:"data", tipo:"3d", cor:"#ff7a1a", status:"ok", imagem:"",
-    resumo:"Painel 3D interativo que transforma a base de dados da unidade em uma visualização navegável.",
-    faz:["Lê a planilha-banco da unidade","Mostra os indicadores em 3D","Versão corporativa usando o mesmo banco","Visual pensado para apresentação à chefia"],
-    impacto:"Dados que ficavam escondidos em abas viraram uma visão clara e impactante.",
-    stack:["JavaScript","3D na web","Google Sheets"] },
+  { id:"empresa360", nome:"Empresa360", cat:"data", tipo:"3d", cor:"#2f7cf6", status:"ok", destaque:true, imagem:"img/empresa360.jpg",
+    resumo:"Plataforma de gestão que mostra compras, orçamento e contratos de uma organização inteira em um mapa 3D interativo e em um painel executivo, atualizados sozinhos todos os dias.",
+    faz:["Mapa 3D navegável (three.js): cada prédio é uma divisão — clique para abrir os dados dela","Lê planilhas ao vivo direto do navegador: ao abrir, a cada 10 minutos e no botão Atualizar","Bases atualizadas automaticamente de segunda a sexta às 7h","Cópia de reserva embutida: se a fonte de dados cair, o painel continua funcionando e avisa na tela","Painel executivo (sem 3D) com a mesma base, pensado para a diretoria","Gráficos por mês, filtros, busca e ficha completa de cada registro","Instalável no celular como app (PWA), com ícone e tela cheia","Rotina automática no GitHub Actions que regrava a cópia de reserva"],
+    impacto:"Informação que ficava espalhada em várias planilhas virou um único painel, atualizado sozinho e consultado em segundos — no computador ou no celular.",
+    stack:["three.js","JavaScript","Google Sheets","GitHub Actions","PWA","Vercel"],
+    modulos:[
+      {g:"Divisão de Contrato", itens:["Contratos","Execução Orçamentária","Restos a Pagar","Nota de Empenho","Nota de Crédito"]},
+      {g:"Divisão de Obtenção", itens:["Controle de Licitações","Atas de Registro de Preços (SRP)"]},
+      {g:"Divisão Administrativa", itens:["Liquidação","Ordem Bancária","Efetivo"], breve:true},
+      {g:"Painel Executivo", itens:["Visão geral","Orçamento por unidade, natureza e plano interno","Notas de empenho","Contratos e vencimentos","Atas de registro","Licitações do PCA por etapa","Restos a pagar"]}
+    ],
+    galeria:[
+      {src:"img/e360-3d.jpg", t:"Mapa 3D: cada prédio é uma divisão"},
+      {src:"img/e360-visao-geral.jpg", t:"Painel executivo: visão geral do orçamento"},
+      {src:"img/e360-empenhos.jpg", t:"Notas de empenho por mês"},
+      {src:"img/e360-contratos.jpg", t:"Contratos e fim de vigência"},
+      {src:"img/e360-licitacoes.jpg", t:"Licitações do PCA por etapa"},
+      {src:"img/e360-restos.jpg", t:"Restos a pagar mês a mês"}
+    ] },
   { id:"dash-orc", nome:"Painel de Execução Orçamentária", cat:"data", tipo:"dash", cor:"#14b8a6", status:"ok", imagem:"",
     resumo:"Dashboards e apresentações comparando a execução orçamentária entre unidades.",
     faz:["Gráficos por natureza de despesa","Comparativo entre unidades e anos","Gráficos em alta qualidade para slides","Tema escuro profissional"],
@@ -570,7 +630,7 @@ function renderFiltros(){
 function renderGrid(){
   const lista = PROJETOS.filter(p=>filtro==="todos"||p.cat===filtro);
   document.getElementById("grid").innerHTML = lista.map((p,i)=>`
-    <article class="card" style="animation-delay:${i*40}ms" onclick="abrir('${p.id}')" tabindex="0" onkeydown="if(event.key==='Enter')abrir('${p.id}')">
+    <article class="card ${p.destaque?'featured-card':''}" style="animation-delay:${i*40}ms" onclick="abrir('${p.id}')" tabindex="0" onkeydown="if(event.key==='Enter')abrir('${p.id}')">
       ${thumb(p)}
       <div class="card-body">
         <div class="cat">${CATS[p.cat]}</div>
@@ -598,6 +658,8 @@ function abrir(id){
           <h4>Tecnologias</h4><div class="tags" style="margin-top:0">${p.stack.map(s=>`<span class="tag">${s}</span>`).join("")}</div>
         </div>
       </div>
+      ${p.modulos?`<div style="margin-top:26px"><h4 style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:12px">Tópicos que o sistema puxa</h4><div class="feat-mods" style="margin-top:0">${p.modulos.map(m=>`<div class="mod"><h4><i></i>${m.g}${m.breve?'<span class="soon">EM BREVE</span>':''}</h4><ul>${m.itens.map(t=>`<li>${t}</li>`).join("")}</ul></div>`).join("")}</div></div>`:""}
+      ${p.galeria?`<div class="mgal">${p.galeria.map((g,i)=>`<img src="${g.src}" alt="${g.t}" title="${g.t}" onclick="lb(PROJETOS.find(x=>x.id==='${p.id}').galeria,${i})">`).join("")}</div>`:""}
       <div class="mlinks">
         ${(p.links||[]).map(l=>`<a class="btn pri" href="${l.u}" target="_blank" rel="noopener">${l.t} ↗</a>`).join("")}
         <a class="btn" href="#contato" onclick="fechar()">Quero algo parecido</a>
@@ -620,7 +682,41 @@ document.getElementById("statProj").textContent = PROJETOS.length+"+";
 document.getElementById("statExt").textContent = PROJETOS.filter(p=>p.stack.includes("Chrome MV3")).length+"+";
 document.querySelectorAll(".nav-links a").forEach(a=>a.onclick=()=>document.getElementById("navLinks").classList.remove("show"));
 
-renderFiltros(); renderGrid();
+
+/* ---------- projeto em destaque + galeria ---------- */
+let LB=[],lbi=0;
+function lb(lista,i){LB=lista;lbi=i;mostrarLB();document.getElementById("lightbox").classList.add("open");}
+function mostrarLB(){const g=LB[lbi];document.getElementById("lbImg").src=g.src;document.getElementById("lbTxt").textContent=g.t+"  ·  "+(lbi+1)+"/"+LB.length;}
+function lbMove(d){lbi=(lbi+d+LB.length)%LB.length;mostrarLB();}
+function lbClose(){document.getElementById("lightbox").classList.remove("open");}
+document.addEventListener("keydown",e=>{if(!document.getElementById("lightbox").classList.contains("open"))return;if(e.key==="ArrowRight")lbMove(1);if(e.key==="ArrowLeft")lbMove(-1);if(e.key==="Escape")lbClose();});
+function renderDestaque(){
+  const p=PROJETOS.find(x=>x.destaque); if(!p)return;
+  const total=p.modulos.reduce((a,m)=>a+m.itens.length,0);
+  document.getElementById("destaque").innerHTML=`
+  <div class="feat">
+    <div class="feat-top">
+      <div class="feat-img" onclick="lb(PROJETOS.find(x=>x.destaque).galeria,0)"><img src="${p.imagem}" alt="Empresa360 — mapa 3D e versão celular"></div>
+      <div>
+        <div class="feat-badge">★ Projeto em destaque</div>
+        <h3>${p.nome}</h3>
+        <p class="lead2">${p.resumo}</p>
+        <div class="feat-kpis">
+          <div><b>${total}</b><span>tópicos de gestão</span></div>
+          <div><b>2</b><span>painéis: 3D e executivo</span></div>
+          <div><b>10 min</b><span>leitura automática</span></div>
+        </div>
+        <div class="tags" style="margin:0 0 18px">${p.stack.map(s=>`<span class="tag">${s}</span>`).join("")}</div>
+        <button class="btn pri" onclick="abrir('${p.id}')">Ver todos os detalhes →</button>
+      </div>
+    </div>
+    <div class="feat-mods">${p.modulos.map(m=>`<div class="mod"><h4><i></i>${m.g}${m.breve?'<span class="soon">EM BREVE</span>':''}</h4><ul>${m.itens.map(t=>`<li>${t}</li>`).join("")}</ul></div>`).join("")}</div>
+    <ul class="feat-feats">${p.faz.map(f=>`<li>${f}</li>`).join("")}</ul>
+    <div class="gal">${p.galeria.map((g,i)=>`<figure onclick="lb(PROJETOS.find(x=>x.destaque).galeria,${i})"><img src="${g.src}" alt="${g.t}" loading="lazy"><figcaption>${g.t}</figcaption></figure>`).join("")}</div>
+  </div>`;
+}
+
+renderDestaque(); renderFiltros(); renderGrid();
 </script>
 </body>
 </html>
